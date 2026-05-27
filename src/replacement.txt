@@ -1,0 +1,214 @@
+<section id="products" className="py-12 md:py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+            <h2 className="text-base text-brand-500 font-semibold tracking-wide uppercase"><span className="animate-pulse">Danh Mục Các Dòng Dây Nhảy Quang Maxtel</span></h2>
+            <p className="inline-block mt-2 text-xl sm:text-2xl md:text-4xl leading-tight font-extrabold tracking-tight text-accent-500 whitespace-nowrap overflow-hidden text-ellipsis max-w-full bg-[#0f172a]/90 backdrop-blur-md px-4 sm:px-6 py-3 rounded-2xl shadow-[0_0_20px_rgba(37,166,223,0.2)] border border-brand-500/30">
+              Đầy đủ kích thước - Chuẩn xác hạ tầng
+            </p>
+            <p className="mt-4 text-lg text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]">Cung cấp đầy đủ chủng loại dây nhảy quang nội bộ, ngoài trời, singlemode và multimode với đầu nối tuỳ chọn theo dự án.</p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+            {[
+              { id: 'singlemode', name: 'Singlemode (SM)' },
+              { id: 'multimode', name: 'Multimode (OM2/OM3)' },
+              { id: 'outdoor', name: 'Dây Ngoài Trời (Outdoor)' },
+              { id: 'dachien', name: 'Dã Chiến / Rulo' },
+            ].map(filter => (
+              <button
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
+                className={`px-5 py-3 sm:py-2.5 rounded-full text-sm font-semibold transition-all min-h-[44px] ${
+                  activeFilter === filter.id 
+                    ? 'bg-brand-600 text-white shadow-[0_0_10px_rgba(37,166,223,0.2)] shadow-brand-500/20 scale-105' 
+                    : 'bg-[#0f172a] text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] hover:bg-slate-800 border border-brand-500/30'
+                }`}
+              >
+                {filter.name}
+              </button>
+            ))}
+          </div>
+
+          <motion.div layout className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 snap-x snap-mandatory gap-4 md:gap-6 px-4 md:px-0 pb-8 -mx-4 md:mx-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <AnimatePresence>
+              {filteredProducts.map((prod) => (
+                <motion.div 
+                  key={prod.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="glass-panel rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(37,166,223,0.15)] border border-brand-500/30 flex flex-col group cursor-pointer flex-none w-[80vw] sm:w-[340px] md:w-auto md:flex-1 snap-center"
+                  onClick={scrollToContact}
+                >
+                  <div className="aspect-square relative overflow-hidden bg-white rounded-t-2xl p-4 flex items-center justify-center">
+                    <img src={prod.img} loading="lazy" decoding="async" alt={prod.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 p-2" />
+                    <div className="absolute bottom-3 left-3 flex gap-2">
+                       <span className="bg-[#0f172a]/90 text-white text-xs font-bold px-2 py-1.5 rounded-lg border border-brand-500 shadow-sm">{prod.cap}</span>
+                    </div>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col border-t border-brand-500/10">
+                    <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-brand-500 transition-colors uppercase leading-snug">{prod.title}</h3>
+                    <p className="text-sm text-slate-300 line-clamp-2 mb-4 leading-relaxed">{prod.desc}</p>
+                    
+                    <div className="flex flex-wrap gap-1 mb-4 mt-auto">
+                      {prod.tags.map(tag => (
+                        <span key={tag} className="text-[10px] font-medium text-slate-300 bg-black/40 px-2 py-1 rounded">#{tag}</span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-center pt-2 gap-2 border-t border-brand-500/20">
+                      <button className="w-full text-brand-400 bg-brand-900/40 border border-brand-500/30 group-hover:bg-brand-600 group-hover:text-white group-hover:border-transparent px-3 py-2.5 text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap">
+                        TẢI BÁO GIÁ ĐẠI LÝ
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+          
+          <div className="text-center mt-12 sm:mt-16 pt-8 border-t border-brand-500/30">
+            <button onClick={scrollToContact} className="w-full sm:w-auto bg-accent-600 hover:bg-accent-500 text-white shadow-[0_0_20px_rgba(195,28,36,0.6)] border border-accent-400/50 font-bold px-8 py-3.5 rounded-xl sm:rounded-full inline-flex items-center justify-center gap-2 text-base transition-colors">
+               Xem toàn bộ Catalogue Profile Maxtel <ChevronRight className="w-5 h-5"/>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Brands / Social Proof */}
+      <section className="py-8 md:py-10 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm font-semibold text-brand-50 uppercase tracking-wider mb-6 md:mb-8">Maxtel vinh dự là nhà cung cấp vật tư thiết bị quang cho các công trình trọng điểm của:</p>
+          
+          <div className="relative flex overflow-x-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+            <div className="flex animate-marquee whitespace-nowrap min-w-max">
+              {[
+                { name: 'Viettel', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%23EF4444%22%3EViettel%3C/text%3E%3C/svg%3E', theme: 'border-red-500/30 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]' },
+                { name: 'VNPT', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%233B82F6%22%3EVNPT%3C/text%3E%3C/svg%3E', theme: 'border-blue-400/30 hover:border-blue-400 hover:shadow-[0_0_15px_rgba(96,165,250,0.4)]' },
+                { name: 'FPT Telecom', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2224%22 font-weight=%22bold%22 fill=%22%23F97316%22%3EFPT Telecom%3C/text%3E%3C/svg%3E', theme: 'border-orange-500/30 hover:border-orange-500 hover:shadow-[0_0_15px_rgba(249,115,22,0.4)]' },
+                { name: 'Mobifone', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%2322D3EE%22%3EMobifone%3C/text%3E%3C/svg%3E', theme: 'border-cyan-400/30 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]' },
+                { name: 'CMC', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%23818CF8%22%3ECMC%3C/text%3E%3C/svg%3E', theme: 'border-indigo-400/30 hover:border-indigo-400 hover:shadow-[0_0_15px_rgba(129,140,248,0.4)]' },
+                { name: 'VinaPhone', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%233B82F6%22%3EVinaPhone%3C/text%3E%3C/svg%3E', theme: 'border-blue-500/30 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]' },
+                { name: 'Samsung', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%232563EB%22%3ESAMSUNG%3C/text%3E%3C/svg%3E', theme: 'border-blue-600/30 hover:border-blue-600 hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]' },
+                { name: 'Vingroup', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%23EAB308%22%3EVINGROUP%3C/text%3E%3C/svg%3E', theme: 'border-yellow-600/30 hover:border-yellow-600 hover:shadow-[0_0_15px_rgba(202,138,4,0.4)]' },
+                // Duplicate items for infinite scroll
+                { name: 'Viettel', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%23EF4444%22%3EViettel%3C/text%3E%3C/svg%3E', theme: 'border-red-500/30 hover:border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]' },
+                { name: 'VNPT', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%233B82F6%22%3EVNPT%3C/text%3E%3C/svg%3E', theme: 'border-blue-400/30 hover:border-blue-400 hover:shadow-[0_0_15px_rgba(96,165,250,0.4)]' },
+                { name: 'FPT Telecom', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2224%22 font-weight=%22bold%22 fill=%22%23F97316%22%3EFPT Telecom%3C/text%3E%3C/svg%3E', theme: 'border-orange-500/30 hover:border-orange-500 hover:shadow-[0_0_15px_rgba(249,115,22,0.4)]' },
+                { name: 'Mobifone', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%2322D3EE%22%3EMobifone%3C/text%3E%3C/svg%3E', theme: 'border-cyan-400/30 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(34,211,238,0.4)]' },
+                { name: 'CMC', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%23818CF8%22%3ECMC%3C/text%3E%3C/svg%3E', theme: 'border-indigo-400/30 hover:border-indigo-400 hover:shadow-[0_0_15px_rgba(129,140,248,0.4)]' },
+                { name: 'VinaPhone', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%233B82F6%22%3EVinaPhone%3C/text%3E%3C/svg%3E', theme: 'border-blue-500/30 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)]' },
+                { name: 'Samsung', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%232563EB%22%3ESAMSUNG%3C/text%3E%3C/svg%3E', theme: 'border-blue-600/30 hover:border-blue-600 hover:shadow-[0_0_15px_rgba(37,99,235,0.4)]' },
+                { name: 'Vingroup', logo: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 80%22%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial, sans-serif%22 font-size=%2228%22 font-weight=%22bold%22 fill=%22%23EAB308%22%3EVINGROUP%3C/text%3E%3C/svg%3E', theme: 'border-yellow-600/30 hover:border-yellow-600 hover:shadow-[0_0_15px_rgba(202,138,4,0.4)]' },
+              ].map((partner, idx) => (
+                <div key={idx} className={`mx-3 px-4 py-2 sm:px-6 sm:py-3 rounded-xl border transition-all duration-300 bg-white/95 hover:bg-white flex items-center justify-center w-[120px] sm:w-[180px] h-[60px] sm:h-[80px] cursor-default inline-flex ${partner.theme}`}>
+                  <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain transition-transform hover:scale-105 filter drop-shadow-sm p-1" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Outline */}
+      <section id="features" className="py-12 md:py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16 overflow-hidden">
+            <h2 className="text-base text-brand-500 font-semibold tracking-wide uppercase">Cấu Trúc Cáp Quang Tối Ưu Nhất</h2>
+            <p className="inline-block mt-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-snug sm:leading-tight font-extrabold tracking-tight text-accent-500 bg-[#0f172a]/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-[0_0_20px_rgba(37,166,223,0.2)] border border-brand-500/30 text-center">
+              VÌ SAO DÂY NHẢY QUANG MAXTEL LẠI ĐƯỢC CHỨNG NHẬN ISO?
+            </p>
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-8 lg:gap-12 max-w-6xl mx-auto">
+            {/* Sidebar / Tabs */}
+            <div 
+              className="flex flex-row overflow-x-auto md:flex-col gap-2 sm:gap-3 md:w-64 lg:w-80 pb-4 md:pb-0 flex-shrink-0"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {[
+                { 
+                  icon: Shield, 
+                  title: "Lõi Sợi Quang Tinh Khiết", 
+                  desc: "Kính thạch anh tinh khiết, lõi siêu mảnh giúp ánh sáng truyền đi với độ suy hao tối thiểu, đảm bảo tín hiệu xa." 
+                },
+                { 
+                  icon: ShieldCheck, 
+                  title: "Đầu Nối Chuẩn Xác (UPC/APC)", 
+                  desc: "Bề mặt tiếp xúc gia công gốm Ceramic, độ bóng cao giúp giảm phản xạ ánh sáng (Return loss) vượt trội." 
+                },
+                { 
+                  icon: Zap, 
+                  title: "Vỏ LSZH Chống Cháy & Bền Bỉ", 
+                  desc: "Kháng dung môi, chống cháy lan, sinh ít khói độc (LSZH), kết dính linh hoạt chống nứt gãy sụt khi uốn cong." 
+                }
+              ].map((feat, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveFeature(idx)}
+                  className={`px-5 py-3 md:py-4 md:px-6 rounded-xl text-sm transition-all text-left whitespace-nowrap md:whitespace-normal border flex flex-col gap-2 md:min-w-0 ${
+                    activeFeature === idx 
+                      ? 'bg-brand-600/10 border-brand-500 shadow-[0_0_20px_rgba(37,166,223,0.15)] scale-[1.02]' 
+                      : 'bg-[#0f172a] border-brand-500/20 hover:bg-slate-800 hover:border-brand-500/40'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${activeFeature === idx ? 'bg-brand-500/20' : 'bg-slate-800'}`}>
+                      <feat.icon className={`w-5 h-5 flex-shrink-0 ${activeFeature === idx ? 'text-brand-400' : 'text-brand-500'}`} />
+                    </div>
+                    <span className={`font-bold text-base ${activeFeature === idx ? 'text-white' : 'text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]'}`}>{feat.title}</span>
+                  </div>
+                  <p className={`text-sm leading-relaxed hidden md:block mt-1 ${activeFeature === idx ? 'text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]' : 'text-slate-200'} `}>{feat.desc}</p>
+                </button>
+              ))}
+            </div>
+
+            {/* Feature Content Showcase */}
+            <div className="md:flex-1 w-full relative">
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[80%] max-h-[80%] bg-brand-600/10 blur-[40px] md:blur-[80px] pointer-events-none rounded-full"></div>
+              
+               <div className="glass-panel relative rounded-2xl shadow-[0_0_30px_rgba(37,166,223,0.15)] overflow-hidden border border-brand-500/30 w-full z-10 bg-white group">
+                 <AnimatePresence mode="wait">
+                   {[
+                     {
+                       title: "Lõi Sợi Quang Tinh Khiết",
+                       desc: "Chi tiết hình ảnh sợi quang tinh khiết truyền tín hiệu không thất thoát.",
+                       icon: Shield,
+                       image: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg"
+                     },
+                     {
+                       title: "Đầu Nối Chuẩn Xác (UPC/APC)",
+                       desc: "Đầu cắm chuẩn SC/LC/FC UPC/APC đúc sẵn chắc chắn với tiêu chuẩn suy hao siêu thấp.",
+                       icon: ShieldCheck,
+                       image: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg"
+                     },
+                     {
+                       title: "Vỏ LSZH Chống Cháy & Bền Bỉ",
+                       desc: "Chất liệu vỏ linh hoạt, bền chắc, chịu lực căng khi thi công cáp tại Data Center.",
+                       icon: Zap,
+                       image: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg"
+                     }
+                   ].map((content, idx) => (
+                     activeFeature === idx && (
+                       <motion.div
+                         key={idx}
+                         initial={{ opacity: 0, scale: 0.95 }}
+                         animate={{ opacity: 1, scale: 1 }}
+                         exit={{ opacity: 0, scale: 0.95 }}
+                         transition={{ duration: 0.3 }}
+                         className="cursor-pointer bg-white w-full h-full flex"
+                         onClick={() => setSelectedImage(content.image)}
+                       >
+                         {/* Image Background */}
+                         <img src={content.image} loading="lazy" decoding="async" alt={content.title} className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.03]" />
+                       </motion.div>
+                     )
+                   ))}
+                 </AnimatePresence>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>

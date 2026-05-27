@@ -1,0 +1,299 @@
+<products>
+  [
+    // Singlemode
+    {
+      id: 1,
+      title: "Dây Nhảy Quang Singlemode SC-SC UPC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Dây nhảy tiêu chuẩn, lõi sợi quang OS2 cho kết nối suy hao điểm-nối-điểm cực thấp.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OS2", "SC-SC"]
+    },
+    {
+      id: 2,
+      title: "Dây Nhảy Quang Singlemode SC-LC UPC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Chuyển tiếp tín hiệu từ cổng SC sang LC chuẩn xác, không suy hao.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["SC-LC", "UPC"]
+    },
+    {
+      id: 3,
+      title: "Dây Nhảy Quang Singlemode LC-LC UPC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Chuẩn cắm LC nhỏ gọn chuyên dụng cho server, switch SFP cao cấp.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["LC-LC", "SFP"]
+    },
+    {
+      id: 4,
+      title: "Dây Nhảy Quang Singlemode SC-SC APC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Đầu vát APC màu xanh lá chuyên phục vụ mạng lõi GPON, FTTH.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["APC", "FTTH"]
+    },
+    {
+      id: 5,
+      title: "Dây Nhảy Quang Singlemode SC-LC APC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Dây nhảy cho thiết bị viễn thông đòi hỏi suy hao phản xạ Return Loss cao.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["SC-LC", "APC"]
+    },
+    {
+      id: 6,
+      title: "Dây Nhảy Quang Singlemode LC-LC APC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Chuyên dụng cho các mạng quang hoạt động công suất quang (dBm) lớn.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["LC-LC", "APC"]
+    },
+    {
+      id: 7,
+      title: "Dây Nhảy Quang Singlemode FC-FC UPC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Đầu cắm vặn ren chắc chắn phù hợp môi trường rung lắc mạnh.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["FC-FC", "Trục ren"]
+    },
+    {
+      id: 8,
+      title: "Dây Nhảy Quang Singlemode FC-SC UPC",
+      category: "singlemode",
+      cap: "1m-30m",
+      desc: "Kết nối ODF (chuẩn FC) sang thiết bị đầu cuối quang Modem/Switch (SC).",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["FC-SC", "Odf sang switch"]
+    },
+
+    // Multimode
+    {
+      id: 9,
+      title: "Dây Nhảy Quang Multimode OM2 SC-SC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Lõi 50/125um truyền dẫn 1Gbps ổn định ở thiết bị khoảng cách ngắn.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM2", "1Gbps"]
+    },
+    {
+      id: 10,
+      title: "Dây Nhảy Quang Multimode OM2 LC-LC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Sợi quang OM2 vỏ cáp cam dễ nhận biết, đạt chuẩn chống cháy.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Vỏ cam", "OM2"]
+    },
+    {
+      id: 11,
+      title: "Dây Nhảy Quang Multimode OM3 SC-SC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Truyền tín hiệu bước sóng 850nm, băng thông cực nhanh lên 10Gbps.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM3", "SC-SC"]
+    },
+    {
+      id: 12,
+      title: "Dây Nhảy Quang Multimode OM3 LC-LC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Lõi 50/125um truyền dẫn 10Gbps ổn định cho tủ quang switch trung tâm.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM3", "10Gbps"]
+    },
+    {
+      id: 13,
+      title: "Dây Nhảy Quang Multimode OM3 SC-LC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Dây nhảy OM3 cao cấp chuyển đổi cổng giao tiếp giữa mạng lõi.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM3", "Xanh Aqua"]
+    },
+    {
+      id: 14,
+      title: "Dây Nhảy Quang Multimode OM4 LC-LC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Hỗ trợ truyền hình ảnh/dữ liệu 40G/100G vô cùng mạnh mẽ.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM4", "40Gbps"]
+    },
+    {
+      id: 15,
+      title: "Dây Nhảy Quang Multimode OM4 SC-SC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Sản phẩm chiến lược thay thế cho hạ tầng OM3 cần nâng cấp.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM4", "SC-SC"]
+    },
+    {
+      id: 16,
+      title: "Dây Nhảy Quang Multimode OM5 LC-LC",
+      category: "multimode",
+      cap: "1m-30m",
+      desc: "Công nghệ WDM hiện đại nhất OM5 - hỗ trợ màu xanh chuối Lime Green.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["OM5", "100+Gbps"]
+    },
+
+    // Outdoor
+    {
+      id: 17,
+      title: "Dây Nhảy Quang Ngoài Trời 2 Core (SC-SC)",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Thiết kế Outdoor chuyên biệt kết hợp cáp 2 Core và đầu connector đúc SC/UPC.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["2FO", "Outdoor"]
+    },
+    {
+      id: 18,
+      title: "Dây Nhảy Quang Ngoài Trời 2 Core (LC-LC)",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Sợi bảo vệ vỏ cứng, chống đứt chuyên dụng kéo xa chuẩn LC-LC.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Outdoor LC", "Vỏ PE"]
+    },
+    {
+      id: 19,
+      title: "Dây Nhảy Quang Ngoài Trời 4 Core Lõi Treo",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Líp dây thép chịu gia cường 4 sợi lõi liên thông trung tâm viễn thông.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["4FO", "Lõi Treo"]
+    },
+    {
+      id: 20,
+      title: "Dây Nhảy Quang Ngoài Trời 1 Core (PE)",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Chuyên kéo Internet đến nhà xưởng độc lập (Bọc PE đen dày).",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["1 Core", "FTTH"]
+    },
+    {
+      id: 21,
+      title: "Dây Nhảy Quang Ngoài Trời 8 Core (Bọc M/A)",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Chống chuột cắn hoàn hảo có lớp bọc kim loại Armored (M/A).",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["8 Core", "Armored"]
+    },
+    {
+      id: 22,
+      title: "Dây Nhảy Ngoài Trời Duplex LC-SC Gãy Khúc",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Thiết kế đa dụng dễ lắp vào đầu chuyển đổi 2 chuẩn LC sang SC.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Duplex", "Ngoài Trời"]
+    },
+    {
+      id: 23,
+      title: "Dây Quang Ngoài Trời Thép Chịu Lực FC-FC",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Sử dụng cho dàn Camera trên mỏ quặng, trục xoắn chống đứt tuyệt đối.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Cam IP", "FC-FC"]
+    },
+    {
+      id: 24,
+      title: "Dây Quang Ngoài Trời Kháng Nước IP67",
+      category: "outdoor",
+      cap: "Tuỳ chọn",
+      desc: "Đầu đúc khối bảo vệ bởi vòng zon cao su, chịu ngập úng không nhiễm ẩm vào lõi.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["IP67", "Kháng Nước"]
+    },
+
+    // Dachien
+    {
+      id: 25,
+      title: "Cáp Quang Rulo Dã Chiến 4Core (SC-SC)",
+      category: "dachien",
+      cap: "100m-500m",
+      desc: "Cáp 4 lõi bọc sợi đan xoắn trong cuộn rulo tay cầm kéo nhả chuyên ghi hình truyền hình.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Rulo", "Truyền Hình"]
+    },
+    {
+      id: 26,
+      title: "Cáp Quang Rulo Dã Chiến 4Core (LC-LC)",
+      category: "dachien",
+      cap: "100m-500m",
+      desc: "Cuộn rút nhanh, cắm thẳng vào máy quay trực tiếp. Lớp vỏ siêu đàn hồi TPU.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Rulo", "LC-LC"]
+    },
+    {
+      id: 27,
+      title: "Dây Cáp Quang Rulo Quân Sự 2Core 200m",
+      category: "dachien",
+      cap: "200m",
+      desc: "Màu sắc ngụy trang an toàn, không dễ quan sát, độ bền kéo cực mạnh.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Quân sự", "2FO"]
+    },
+    {
+      id: 28,
+      title: "Cáp Quang Rulo Dã Chiến 8Core 500m",
+      category: "dachien",
+      cap: "500m",
+      desc: "Trục quay kích thước lớn khung kim loại chống lật đỗ lăn, xe cứu hộ viễn thông.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["8FO", "500m"]
+    },
+    {
+      id: 29,
+      title: "Cáp Quang Rulo Bọc Nhựa TPU 4Core",
+      category: "dachien",
+      cap: "Tuỳ chọn",
+      desc: "Chất liệu TPU kháng khuẩn, kháng hóa chất rêu mốc, kéo ở băng tuyết, bùn đất dễ tẩy rửa.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["TPU", "Siêu bền"]
+    },
+    {
+      id: 30,
+      title: "Cuộn Dây Quang Dã Chiến (Connector MPO)",
+      category: "dachien",
+      cap: "Tuỳ chọn",
+      desc: "Sử dụng đầu nối MPO tiết kiệm không gian với luồng tín hiệu băng thông khổng lồ.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["MPO", "Băng thông"]
+    },
+    {
+      id: 31,
+      title: "Trục Cáp Quang Dã Chiến Bọc Thép 4Core 300m",
+      category: "dachien",
+      cap: "300m",
+      desc: "Khu vực địa hình hiểm trở có sự cắn phá của thú, cáp bọc vỏ thép lò xo bên trong.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["Bọc thép", "Lò xo"]
+    },
+    {
+      id: 32,
+      title: "Cáp Quang Rulo Kéo Lại 2Core (SC-APC) 1000m",
+      category: "dachien",
+      cap: "1000m",
+      desc: "Cuộn rulo dung lượng khủng 1km có hệ dây hãm tốc chuyên lắp đầu GPON tạm thời.",
+      img: "https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg",
+      tags: ["1000m", "SC-APC"]
+    }
+  ]
+</products>
