@@ -706,7 +706,7 @@ export default function App() {
                        title: "Lõi Sợi Quang Tinh Khiết",
                        desc: "Chi tiết hình ảnh sợi quang tinh khiết truyền tín hiệu không thất thoát.",
                        icon: Shield,
-                       image: "https://maxtel.vn/wp-content/uploads/2026/05/loi-soi-tinh-khiet.png"
+                       image: "https://maxtel.vn/wp-content/uploads/2026/05/loi-soi-tinh-khiet.jpg"
                      },
                      {
                        title: "Đầu Nối Chuẩn Xác (UPC/APC)",
