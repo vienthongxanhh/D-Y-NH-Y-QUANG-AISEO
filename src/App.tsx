@@ -512,12 +512,12 @@ export default function App() {
                 {/* Product Image */}
                 <div className="bg-white rounded-2xl overflow-hidden shadow-inner aspect-[4/3] sm:aspect-auto sm:h-[450px] relative flex md:flex-col items-center justify-center border border-brand-500/40 p-4">
                   <img 
-                    src="https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg" 
+                    src="https://maxtel.vn/wp-content/uploads/2026/05/day-nhay-quang.png" 
                     fetchPriority="high" 
                     loading="eager" 
                     alt="Banner Dây Nhảy Quang Maxtel" 
                     className="absolute inset-0 w-full h-full object-contain cursor-pointer transition-transform duration-700 hover:scale-105 p-6" 
-                    onClick={() => setSelectedImage("https://vienthongxanh.vn/wp-content/uploads/2021/04/day-nhay-quang.jpg")}
+                    onClick={() => setSelectedImage("https://maxtel.vn/wp-content/uploads/2026/05/day-nhay-quang.png")}
                   />
                   
                   {/* Overlay for zoom hint */}
@@ -537,7 +537,7 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
             <h2 className="text-base text-brand-500 font-semibold tracking-wide uppercase"><span className="animate-pulse">Danh Mục Các Dòng Dây Nhảy Quang Maxtel</span></h2>
             <p className="inline-block mt-2 text-xl sm:text-2xl md:text-4xl leading-tight font-extrabold tracking-tight text-accent-500 whitespace-nowrap overflow-hidden text-ellipsis max-w-full bg-[#0f172a]/90 backdrop-blur-md px-4 sm:px-6 py-3 rounded-2xl shadow-[0_0_20px_rgba(37,166,223,0.2)] border border-brand-500/30">
-              Đầy đủ kích thước - Chuẩn xác hạ tầng
+              Đầy đủ chủng loại - Chuẩn xác hạ tầng
             </p>
             <p className="mt-4 text-lg text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]">Cung cấp đầy đủ chủng loại dây nhảy quang nội bộ, ngoài trời, singlemode và multimode với đầu nối tuỳ chọn theo dự án.</p>
           </div>
@@ -586,11 +586,7 @@ export default function App() {
                     <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-brand-500 transition-colors uppercase leading-snug">{prod.title}</h3>
                     <p className="text-sm text-slate-300 line-clamp-2 mb-4 leading-relaxed">{prod.desc}</p>
                     
-                    <div className="flex flex-wrap gap-1 mb-4 mt-auto">
-                      {prod.tags.map(tag => (
-                        <span key={tag} className="text-[10px] font-medium text-slate-300 bg-black/40 px-2 py-1 rounded">#{tag}</span>
-                      ))}
-                    </div>
+                    {/* Tags removed as requested */}
 
                     <div className="flex items-center justify-center pt-2 gap-2 border-t border-brand-500/20">
                       <button className="w-full text-brand-400 bg-brand-900/40 border border-brand-500/30 group-hover:bg-brand-600 group-hover:text-white group-hover:border-transparent px-3 py-2.5 text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap">
@@ -678,11 +674,11 @@ export default function App() {
                   title: "Vỏ LSZH Chống Cháy & Bền Bỉ", 
                   desc: "Kháng dung môi, chống cháy lan, sinh ít khói độc (LSZH), kết dính linh hoạt chống nứt gãy sụt khi uốn cong." 
                 }
-              ].map((feat, idx) => (
+              ].map((feat, idx, arr) => (
                 <button
                   key={idx}
                   onClick={() => setActiveFeature(idx)}
-                  className={`px-5 py-3 md:py-4 md:px-6 rounded-xl text-sm transition-all text-left whitespace-nowrap md:whitespace-normal border flex flex-col gap-2 md:min-w-0 ${
+                  className={`px-5 py-3 md:py-4 md:px-6 rounded-xl text-sm transition-all text-left whitespace-nowrap md:whitespace-normal border flex flex-col gap-2 md:min-w-0 ${idx === arr.length - 1 ? 'md:mt-auto' : ''} ${
                     activeFeature === idx 
                       ? 'bg-brand-600/10 border-brand-500 shadow-[0_0_20px_rgba(37,166,223,0.15)] scale-[1.02]' 
                       : 'bg-[#0f172a] border-brand-500/20 hover:bg-slate-800 hover:border-brand-500/40'
@@ -710,19 +706,19 @@ export default function App() {
                        title: "Lõi Sợi Quang Tinh Khiết",
                        desc: "Chi tiết hình ảnh sợi quang tinh khiết truyền tín hiệu không thất thoát.",
                        icon: Shield,
-                       image: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2024/04/BANNER-DAY-NHAY-QUANG-2.jpg"
+                       image: "https://maxtel.vn/wp-content/uploads/2026/05/loi-soi-tinh-khiet.png"
                      },
                      {
                        title: "Đầu Nối Chuẩn Xác (UPC/APC)",
                        desc: "Đầu cắm chuẩn SC/LC/FC UPC/APC đúc sẵn chắc chắn với tiêu chuẩn suy hao siêu thấp.",
                        icon: ShieldCheck,
-                       image: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2024/04/BANNER-DAY-NHAY-QUANG-2.jpg"
+                       image: "https://maxtel.vn/wp-content/uploads/2026/05/dau-noi-chuan-uapc.png"
                      },
                      {
                        title: "Vỏ LSZH Chống Cháy & Bền Bỉ",
                        desc: "Chất liệu vỏ linh hoạt, bền chắc, chịu lực căng khi thi công cáp tại Data Center.",
                        icon: Zap,
-                       image: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2024/04/BANNER-DAY-NHAY-QUANG-2.jpg"
+                       image: "https://maxtel.vn/wp-content/uploads/2026/05/vo-lszh.png"
                      }
                    ].map((content, idx) => (
                      activeFeature === idx && (
@@ -777,7 +773,7 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
             <h2 className="text-base text-brand-500 font-semibold tracking-wide uppercase">Thông Số Kỹ Thuật dây nhảy quang</h2>
             <p className="inline-block mt-2 text-3xl leading-tight font-extrabold tracking-tight text-accent-500 bg-[#0f172a]/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-[0_0_20px_rgba(37,166,223,0.2)] border border-brand-500/30 sm:text-4xl">
-              Cấu Hình Chi Tiết Từng Dòng Cáp
+              THÔNG SỐ KỸ THUẬT CHI TIẾT CÁC LOẠI
             </p>
             <p className="mt-4 text-lg text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]">Bảng thông số kỹ thuật chuẩn EIA-310-D giúp kỹ sư dự toán mạng thiết kế dễ dàng.</p>
           </div>
