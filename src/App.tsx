@@ -1031,10 +1031,10 @@ export default function App() {
           
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2026/03/Anh-dai-dien-Day-nhay-quang-RM-FO-OM3-LCD-LCD-323065.jpg",
-              "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2025/05/Day-nhay-quang-da-chien-4LCU4LCU-Singlemode-Maxtel-4.jpg",
-              "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2025/02/Day-nhay-quang-MAXTEL-OM2-SC-SC-Duplex-Ngoai-Troi.jpg",
-              "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2025/02/Day-nhay-quang-MAXTEL-Singlemode-LC-SC-Duplex-Ngoai-Troi.jpg"
+              "https://maxtel.vn/wp-content/uploads/2026/05/anh1.png",
+              "https://maxtel.vn/wp-content/uploads/2026/05/anh2.png",
+              "https://maxtel.vn/wp-content/uploads/2026/05/anh3.png",
+              "https://maxtel.vn/wp-content/uploads/2026/05/anh4.png"
             ].map((img, i) => (
                <div 
                  key={i} 
