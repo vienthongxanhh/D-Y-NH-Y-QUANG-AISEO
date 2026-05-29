@@ -468,7 +468,9 @@ export default function App() {
                 Dây Nhảy Quang Tiêu Chuẩn Cao Cấp
               </div>
               <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[1.75rem] xl:text-4xl 2xl:text-5xl font-extrabold tracking-tight text-white leading-tight sm:leading-tight mb-4 lg:mb-6 uppercase">
-                <span className="block mb-2 xl:mb-4 whitespace-nowrap text-gradient hover:animate-glow-red transition-all duration-300 cursor-default">DÂY NHẢY QUANG MAXTEL</span>
+                <span className="block mb-2 xl:mb-4 text-gradient hover:animate-glow-red transition-all duration-300 cursor-default">
+                  DÂY NHẢY QUANG <br /> MAXTEL
+                </span>
               </h1>
               <p className="text-base sm:text-lg text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] mb-6 lg:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 lg:px-0">
                 Lựa chọn dây nhảy quang số 1 của các công trình viễn thông, mạng nội bộ và Data Center. Lõi cáp nguyên chất, đầu bấm đúc sẵn độ suy hao siêu thấp, tín hiệu truyền tải tốc độ cao và bền bỉ theo thời gian.
