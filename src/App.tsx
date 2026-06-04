@@ -17,6 +17,13 @@ export default function App() {
   const [activeSpecFilter, setActiveSpecFilter] = useState('singlemode');
   const [activeFeature, setActiveFeature] = useState(0);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const specificationsData: Record<string, { param: string, value: string }[]> = {
     singlemode: [
       { param: "Chủng loại", value: "Singlemode (OS1/OS2) 9/125µm" },
@@ -476,7 +483,7 @@ export default function App() {
                 Lựa chọn dây nhảy quang số 1 của các công trình viễn thông, mạng nội bộ và Data Center. Lõi cáp nguyên chất, đầu bấm đúc sẵn độ suy hao siêu thấp, tín hiệu truyền tải tốc độ cao và bền bỉ theo thời gian.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 px-4 sm:px-0">
+              <div className="hidden lg:flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 px-4 sm:px-0">
                 <button 
                   onClick={scrollToContact}
                   className="w-full sm:w-auto whitespace-nowrap bg-brand-600 hover:bg-blue-600 text-white px-2 py-4 sm:px-6 lg:px-8 lg:py-4 rounded-xl sm:rounded-full font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,166,223,0.4)] shadow-brand-500/20"
@@ -529,7 +536,22 @@ export default function App() {
                 </div>
               </div>
               
-              <div className="flex lg:hidden mt-8 flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-brand-50 w-full">
+              <div className="flex lg:hidden mt-8 flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0">
+                <button 
+                  onClick={scrollToContact}
+                  className="w-full sm:w-auto whitespace-nowrap bg-brand-600 hover:bg-blue-600 text-white px-2 py-4 sm:px-6 lg:px-8 lg:py-4 rounded-xl sm:rounded-full font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,166,223,0.4)] shadow-brand-500/20"
+                >
+                  Nhận Tư Vấn & Báo Giá <ArrowRight className="w-5 h-5 shrink-0" />
+                </button>
+                <a 
+                  href="#products"
+                  className="w-full sm:w-auto whitespace-nowrap flex items-center justify-center gap-2 px-6 py-4 lg:px-8 lg:py-4 rounded-xl sm:rounded-full font-bold text-base sm:text-lg transition-all bg-brand-600 hover:bg-blue-600 text-white border border-brand-500/50 shadow-[0_0_20px_rgba(37,166,223,0.4)] shadow-brand-500/20"
+                >
+                  Xem Bảng Giá / SP
+                </a>
+              </div>
+              
+              <div className="flex lg:hidden mt-6 flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-sm text-brand-50 w-full">
                 <div className="flex -space-x-2">
                   {[1,2,3,4].map(i => (
                      <div key={i} className="w-8 h-8 rounded-full bg-brand-800/40 border-2 border-white flex items-center justify-center shadow-sm text-white font-bold text-xs" style={{backgroundImage: 'url(https://i.pravatar.cc/100?img='+(i+10)+')', backgroundSize: 'cover'}} />
@@ -553,7 +575,7 @@ export default function App() {
             <p className="mt-4 text-lg text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]">Cung cấp đầy đủ chủng loại dây nhảy quang nội bộ, ngoài trời, singlemode và multimode với đầu nối tuỳ chọn theo dự án.</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+          <div className="flex overflow-x-auto sm:flex-wrap justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 snap-x snap-mandatory px-4 sm:px-0 -mx-4 sm:mx-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {[
               { id: 'singlemode', name: 'Singlemode (SM)' },
               { id: 'multimode', name: 'Multimode (OM2/OM3)' },
@@ -563,7 +585,7 @@ export default function App() {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-5 py-3 sm:py-2.5 rounded-full text-sm font-semibold transition-all min-h-[44px] ${
+                className={`flex-none snap-center px-5 py-3 sm:py-2.5 rounded-full text-sm font-semibold transition-all min-h-[44px] ${
                   activeFilter === filter.id 
                     ? 'bg-brand-600 text-white shadow-[0_0_10px_rgba(37,166,223,0.2)] shadow-brand-500/20 scale-105' 
                     : 'bg-[#0f172a] text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] hover:bg-slate-800 border border-brand-500/30'
@@ -577,32 +599,32 @@ export default function App() {
           <motion.div layout className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 pb-8">
             <AnimatePresence>
               {filteredProducts.map((prod) => (
-                <motion.div 
+                  <motion.div 
                   key={prod.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  className="glass-panel rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(37,166,223,0.15)] border border-brand-500/30 flex flex-col group cursor-pointer w-full"
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative rounded-2xl sm:rounded-[1.5rem] overflow-hidden bg-[#0f172a] sm:bg-[#0f172a]/80 sm:backdrop-blur-xl border border-white/10 hover:border-brand-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(37,166,223,0.25)] flex flex-col group cursor-pointer w-full transition-all duration-500"
                   onClick={scrollToContact}
                 >
-                  <div className="aspect-square relative overflow-hidden bg-white rounded-t-2xl p-4 flex items-center justify-center">
-                    <img src={prod.img} loading="lazy" decoding="async" alt={prod.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 p-2" />
-                    <div className="absolute bottom-3 left-3 flex gap-2">
-                       <span className="bg-[#0f172a]/90 text-white text-xs font-bold px-2 py-1.5 rounded-lg border border-brand-500 shadow-sm">{prod.cap}</span>
+                  <div className="aspect-square relative overflow-hidden bg-white/5 p-4 sm:p-6 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+                    <img src={prod.img} loading="lazy" decoding="async" alt={prod.title} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out z-0 drop-shadow-2xl" />
+                    <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 flex gap-2 z-20">
+                       <span className="bg-brand-600/90 text-white text-[9px] sm:text-xs font-bold px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-md sm:rounded-lg border border-brand-400 backdrop-blur-md shadow-sm uppercase tracking-wider">{prod.cap}</span>
                     </div>
                   </div>
-                  <div className="p-3 sm:p-5 flex-1 flex flex-col border-t border-brand-500/10">
-                    <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2 line-clamp-2 group-hover:text-brand-500 transition-colors uppercase leading-snug">{prod.title}</h3>
-                    <p className="hidden sm:block text-sm text-slate-300 line-clamp-2 mb-4 leading-relaxed">{prod.desc}</p>
+                  <div className="p-3 sm:p-5 flex-1 flex flex-col border-t border-white/5 relative z-20 bg-[#0f172a]">
+                    <h3 className="text-[11px] sm:text-lg font-bold text-white mb-1.5 sm:mb-2 line-clamp-3 sm:line-clamp-2 group-hover:text-brand-400 transition-colors uppercase leading-[1.35] sm:leading-snug">{prod.title}</h3>
+                    <p className="hidden md:block text-sm text-slate-400 line-clamp-2 mb-4 leading-relaxed font-medium">{prod.desc}</p>
                     
-                    {/* Tags removed as requested */}
-
-                    <div className="flex items-center justify-center pt-2 gap-2 border-t border-brand-500/20 mt-auto">
-                      <button className="w-full text-brand-400 bg-brand-900/40 border border-brand-500/30 group-hover:bg-brand-600 group-hover:text-white group-hover:border-transparent px-2 sm:px-3 py-2 sm:py-2.5 text-xs sm:text-sm font-bold rounded-lg transition-colors shadow-sm whitespace-nowrap text-center">
-                        BÁO GIÁ ĐẠI LÝ
-                      </button>
+                    <div className="mt-auto pt-3 sm:pt-4 border-t border-white/10 relative">
+                       <button className="w-full relative overflow-hidden bg-white/5 hover:bg-brand-600 text-brand-300 hover:text-white border border-white/10 hover:border-brand-500 px-2 sm:px-3 py-2 sm:py-2.5 text-[10px] sm:text-sm font-bold rounded-lg sm:rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-2 group/btn">
+                          <span className="uppercase tracking-wide sm:tracking-wider">Nhận Báo Giá</span>
+                          <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
+                       </button>
                     </div>
                   </div>
                 </motion.div>
@@ -666,7 +688,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 max-w-6xl mx-auto">
             {/* Sidebar / Tabs */}
             <div 
-              className="flex flex-row overflow-x-auto md:flex-col gap-2 sm:gap-3 md:w-64 lg:w-80 pb-4 md:pb-0 flex-shrink-0"
+              className="hidden md:flex flex-col gap-2 sm:gap-3 md:w-64 lg:w-80 pb-4 md:pb-0 flex-shrink-0"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {[
@@ -869,7 +891,7 @@ export default function App() {
           </div>
 
           {/* Mobile Layout */}
-          <div className="md:hidden space-y-4 pb-4">
+          <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {[
               { 
                 feature: "Chất lượng lõi quang (U)", 
@@ -897,20 +919,20 @@ export default function App() {
                 maxtel: "Lót góc xốp cứng, đóng thùng carton dập logo tiêu chuẩn quy cách xuất khẩu." 
               }
             ].map((row, index) => (
-              <div key={index} className="bg-[#0f172a] rounded-2xl border border-brand-500/20 overflow-hidden shadow-lg relative pb-1">
+              <div key={index} className="w-[85vw] flex-none snap-center bg-[#0f172a] rounded-2xl border border-brand-500/20 overflow-hidden shadow-lg relative pb-1">
                 <div className="absolute top-0 w-full h-[2px] bg-gradient-to-r from-brand-500/50 to-accent-500/50 left-0"></div>
-                <div className="bg-slate-800/80 p-3 border-b border-brand-500/30 text-center">
-                  <h3 className="text-base font-bold text-white">{row.feature}</h3>
+                <div className="bg-slate-800/80 p-3 min-h-[60px] flex items-center justify-center border-b border-brand-500/30 text-center">
+                  <h3 className="text-base font-bold text-white leading-tight">{row.feature}</h3>
                 </div>
-                <div className="grid grid-cols-2 divide-x divide-brand-500/10">
+                <div className="grid grid-cols-2 divide-x divide-brand-500/10 h-[calc(100%-60px)]">
                    <div className="p-4 flex flex-col items-center text-center gap-2 bg-slate-900/50">
                      <span className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Cáp giá rẻ</span>
-                     <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 opacity-60" />
+                     <X className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 opacity-60 shrink-0" />
                      <p className="text-slate-400 text-xs sm:text-sm">{row.normal}</p>
                    </div>
                    <div className="p-4 flex flex-col items-center text-center gap-2 bg-brand-900/20 relative">
                      <span className="text-[10px] sm:text-xs font-bold text-brand-400 uppercase tracking-wider">CÁP MAXTEL (Chuẩn Dự án)</span>
-                     <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-accent-500 drop-shadow-[0_0_5px_rgba(195,28,36,0.8)]" />
+                     <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-accent-500 drop-shadow-[0_0_5px_rgba(195,28,36,0.8)] shrink-0" />
                      <p className="text-white text-xs sm:text-sm font-medium">{row.maxtel}</p>
                    </div>
                 </div>
@@ -997,65 +1019,93 @@ export default function App() {
             <p className="text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] text-lg">Hàng triệu doanh nghiệp đã nâng cấp hạ tầng viễn thông bằng dây nhảy quang Maxtel.</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { 
-                name: "Anh Hoàng Quang", 
-                role: "IT Manager - VietBank", 
-                img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-LCUPC-LCAPC-2.jpg",
-                text: "Là ngân hàng nên chúng tôi đặc biệt yêu cầu khắt khe thiết bị phòng phòng Data Center. dây nhảy quang Maxtel đáp ứng hoàn toàn mọi tiêu chuẩn khắt khe về độ suy hao tiếp xúc, truyền dẫn tín hiệu tốc độ cao cực kỳ ổn định." 
-              },
-              { 
-                name: "Kỹ sư Huỳnh Sang", 
-                role: "Chỉ Huy Phục Vụ Dự Án BĐS", 
-                img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-SCAPC-LCAPC-1.jpg",
-                text: "Tôi thi công hàng ngàn sợi dây nhảy quang LC-SC và phụ kiện quang phân khối vào mạng lõi các tòa nhà The Pride. Mọi thứ từ bao bì đóng gói chống sốc cho đến chất lượng gia công lõi quang của hãng Maxtel rất được chăm chút kỹ càng." 
-              },
-              { 
-                name: "Chị Thu Hoa", 
-                role: "Đại Lý Thiết Bị Viễn Thông", 
-                img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-SCUPC-SCAPC-5.jpg",
-                text: "Cửa hàng tôi bây giờ chỉ phân phối dây nhảy quang hãng Maxtel vì cam kết bảo hành suy hao trọn đời, cung cấp đầy đủ giấy tờ CO, CQ cho dự án. Khách sỉ toàn mua số lượng lớn cực kỳ tin tưởng." 
-              },
-            ].map((t, i) => (
-              <div key={i} className="bg-[#0f172a]/80 backdrop-blur-sm p-8 rounded-3xl border border-brand-500/20 flex flex-col shadow-[0_0_20px_rgba(37,166,223,0.1)] hover:border-brand-500/40 transition-colors">
-                <div className="flex text-yellow-400 mb-6 gap-1">
-                  {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 fill-current" />)}
-                </div>
-                <p className="text-slate-200 text-base leading-relaxed mb-8 flex-1 italic relative">
-                  <span className="text-4xl absolute -top-4 -left-2 text-brand-500/30 font-serif">"</span>
-                  {t.text}
-                  <span className="text-4xl absolute -bottom-6 right-0 text-brand-500/30 font-serif">"</span>
-                </p>
-                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-slate-700/50">
-                  <img src={t.img} loading="lazy" decoding="async" alt={t.name} className="w-12 h-12 rounded-full border-2 border-brand-500 object-cover" />
-                  <div>
-                    <div className="font-bold text-lg text-white">{t.name}</div>
-                    <div className="text-sm text-brand-400">{t.role}</div>
+          <div className="overflow-hidden w-full relative -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex w-max animate-marquee hover:[animation-play-state:paused] gap-6 md:gap-8">
+              {[
+                { 
+                  name: "Anh Hoàng Quang", 
+                  role: "IT Manager - VietBank", 
+                  img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-LCUPC-LCAPC-2.jpg",
+                  text: "Là ngân hàng nên chúng tôi đặc biệt yêu cầu khắt khe thiết bị phòng phòng Data Center. dây nhảy quang Maxtel đáp ứng hoàn toàn mọi tiêu chuẩn khắt khe về độ suy hao tiếp xúc, truyền dẫn tín hiệu tốc độ cao cực kỳ ổn định." 
+                },
+                { 
+                  name: "Kỹ sư Huỳnh Sang", 
+                  role: "Chỉ Huy Phục Vụ Dự Án BĐS", 
+                  img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-SCAPC-LCAPC-1.jpg",
+                  text: "Tôi thi công hàng ngàn sợi dây nhảy quang LC-SC và phụ kiện quang phân khối vào mạng lõi các tòa nhà The Pride. Mọi thứ từ bao bì đóng gói chống sốc cho đến chất lượng gia công lõi quang của hãng Maxtel rất được chăm chút kỹ càng." 
+                },
+                { 
+                  name: "Chị Thu Hoa", 
+                  role: "Đại Lý Thiết Bị Viễn Thông", 
+                  img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-SCUPC-SCAPC-5.jpg",
+                  text: "Cửa hàng tôi bây giờ chỉ phân phối dây nhảy quang hãng Maxtel vì cam kết bảo hành suy hao trọn đời, cung cấp đầy đủ giấy tờ CO, CQ cho dự án. Khách sỉ toàn mua số lượng lớn cực kỳ tin tưởng." 
+                },
+                { 
+                  name: "Anh Hoàng Quang", 
+                  role: "IT Manager - VietBank", 
+                  img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-LCUPC-LCAPC-2.jpg",
+                  text: "Là ngân hàng nên chúng tôi đặc biệt yêu cầu khắt khe thiết bị phòng phòng Data Center. dây nhảy quang Maxtel đáp ứng hoàn toàn mọi tiêu chuẩn khắt khe về độ suy hao tiếp xúc, truyền dẫn tín hiệu tốc độ cao cực kỳ ổn định." 
+                },
+                { 
+                  name: "Kỹ sư Huỳnh Sang", 
+                  role: "Chỉ Huy Phục Vụ Dự Án BĐS", 
+                  img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-SCAPC-LCAPC-1.jpg",
+                  text: "Tôi thi công hàng ngàn sợi dây nhảy quang LC-SC và phụ kiện quang phân khối vào mạng lõi các tòa nhà The Pride. Mọi thứ từ bao bì đóng gói chống sốc cho đến chất lượng gia công lõi quang của hãng Maxtel rất được chăm chút kỹ càng." 
+                },
+                { 
+                  name: "Chị Thu Hoa", 
+                  role: "Đại Lý Thiết Bị Viễn Thông", 
+                  img: "https://vienthongxanh.cdn.vccloud.vn/wp-content/uploads/2023/12/Day-nhay-quang-MAXTEL-Singlemode-SCUPC-SCAPC-5.jpg",
+                  text: "Cửa hàng tôi bây giờ chỉ phân phối dây nhảy quang hãng Maxtel vì cam kết bảo hành suy hao trọn đời, cung cấp đầy đủ giấy tờ CO, CQ cho dự án. Khách sỉ toàn mua số lượng lớn cực kỳ tin tưởng." 
+                }
+              ].map((t, i) => (
+                <div key={i} className="w-[85vw] sm:w-[350px] md:w-[400px] shrink-0 bg-[#0f172a]/80 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-brand-500/20 flex flex-col shadow-[0_0_20px_rgba(37,166,223,0.1)] hover:border-brand-500/40 transition-colors">
+                  <div className="flex text-yellow-400 mb-6 gap-1">
+                    {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />)}
+                  </div>
+                  <p className="text-slate-200 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 flex-1 italic relative">
+                    <span className="text-4xl absolute -top-4 -left-2 text-brand-500/30 font-serif">"</span>
+                    {t.text}
+                    <span className="text-4xl absolute -bottom-6 right-0 text-brand-500/30 font-serif">"</span>
+                  </p>
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-slate-700/50">
+                    <img src={t.img} loading="lazy" decoding="async" alt={t.name} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-brand-500 object-cover" />
+                    <div>
+                      <div className="font-bold text-base sm:text-lg text-white">{t.name}</div>
+                      <div className="text-xs sm:text-sm text-brand-400">{t.role}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              "https://maxtel.vn/wp-content/uploads/2026/05/anh1.png",
-              "https://maxtel.vn/wp-content/uploads/2026/05/anh2.png",
-              "https://maxtel.vn/wp-content/uploads/2026/05/anh3.png",
-              "https://maxtel.vn/wp-content/uploads/2026/05/anh4.png"
-            ].map((img, i) => (
-               <div 
-                 key={i} 
-                 className="h-32 sm:h-48 rounded-xl overflow-hidden relative group cursor-pointer border border-brand-500/20 p-2 bg-white"
-                 onClick={() => setSelectedImage(img)}
-               >
-                 <img src={img} loading="lazy" decoding="async" alt="Hình ảnh dây nhảy quang chụp tại kho thật" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                 <div className="absolute inset-0 bg-brand-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <span className="text-white font-medium text-sm border border-white/30 px-3 py-1 rounded-full bg-black/40 shadow-sm">Xem chi tiết Cáp</span>
+          <div className="mt-12 sm:mt-20 overflow-hidden w-full relative -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex w-max animate-marquee hover:[animation-play-state:paused] gap-4" style={{ animationDuration: '30s' }}>
+              {[
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh1.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh2.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh3.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh4.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh1.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh2.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh3.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh4.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh1.png",
+                "https://maxtel.vn/wp-content/uploads/2026/05/anh2.png"
+              ].map((img, i) => (
+                 <div 
+                   key={i} 
+                   className="w-[200px] sm:w-[280px] shrink-0 h-32 sm:h-48 rounded-xl overflow-hidden relative group cursor-pointer border border-brand-500/20 p-2 bg-white"
+                   onClick={() => setSelectedImage(img)}
+                 >
+                   <img src={img} loading="lazy" decoding="async" alt="Hình ảnh dây nhảy quang chụp tại kho thật" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
+                   <div className="absolute inset-0 bg-brand-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                     <span className="text-white font-medium text-xs sm:text-sm border border-white/30 px-3 py-1 rounded-full bg-black/40 shadow-sm">Xem chi tiết</span>
+                   </div>
                  </div>
-               </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1064,7 +1114,7 @@ export default function App() {
       <section id="contact-section" className="py-12 md:py-24 relative">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-[#0f172a]  rounded-3xl shadow-[0_0_20px_rgba(37,166,223,0.4)] overflow-hidden flex flex-col md:flex-row relative">
-            <div className="md:w-5/12 bg-slate-800/80 backdrop-blur-md p-8 sm:p-10 text-white flex flex-col justify-between border-r border-slate-700/50">
+            <div className="hidden md:flex md:w-5/12 bg-slate-800/80 backdrop-blur-md p-8 sm:p-10 text-white flex-col justify-between border-r border-slate-700/50">
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">BÁO GIÁ ĐẠI LÝ LÊN TỚI 40%!</h3>
                 <p className="text-slate-300 text-xs sm:text-sm mb-6">Xin hãy để lại thông tin để chúng tôi liên hệ tư vấn dòng dây nhảy quang phù hợp và gởi bảng báo giá VIP cho doanh nghiệp.</p>
