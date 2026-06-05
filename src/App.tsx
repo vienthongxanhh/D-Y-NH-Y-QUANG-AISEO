@@ -814,8 +814,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 max-w-5xl mx-auto">
             {/* Sidebar / Tabs */}
             <div 
-              className="flex flex-row overflow-x-auto md:flex-col gap-2 sm:gap-3 md:w-56 lg:w-72 pb-4 md:pb-0 flex-shrink-0"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex flex-row overflow-x-auto md:flex-col justify-start md:justify-center gap-2 sm:gap-3 pb-4 md:pb-0 md:w-56 lg:w-72 flex-shrink-0 snap-x snap-mandatory px-4 sm:px-0 -mx-4 sm:mx-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             >
                {[
                 { id: 'singlemode', name: 'Singlemode (SM)', icon: Box },
@@ -826,7 +825,7 @@ export default function App() {
                 <button
                   key={filter.id}
                   onClick={() => setActiveSpecFilter(filter.id)}
-                  className={`px-5 py-3.5 md:py-4 md:px-6 rounded-xl text-sm font-semibold transition-all text-left whitespace-nowrap md:whitespace-normal border flex items-center gap-3 relative min-h-[48px] ${
+                  className={`flex-none snap-center px-5 py-3.5 md:py-4 md:px-6 rounded-xl text-sm font-semibold transition-all text-left whitespace-nowrap md:whitespace-normal border flex items-center gap-3 relative min-h-[48px] ${
                     activeSpecFilter === filter.id 
                       ? 'bg-brand-600 text-white border-brand-400 shadow-[0_0_20px_rgba(37,166,223,0.3)] shadow-brand-500/20' 
                       : 'bg-[#0f172a] text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)] border-brand-500/30 hover:bg-slate-800 hover:border-brand-500/60'
@@ -860,11 +859,11 @@ export default function App() {
                           transition={{ duration: 0.3 }}
                        >
                          {specificationsData[activeSpecFilter].map((spec, index) => (
-                           <div key={index} className="flex flex-col md:grid md:grid-cols-5 border-b last:border-b-0 border-brand-500/20 hover:bg-brand-900/20 transition-all duration-300 group">
-                             <div className="py-3 px-4 md:px-6 md:py-4 text-sm font-semibold text-brand-50 bg-black/20 md:border-r border-brand-500/20 col-span-2 group-hover:text-brand-400 transition-colors flex items-center">
+                           <div key={index} className="flex flex-col md:grid md:grid-cols-5 border-b last:border-b-0 border-brand-500/20 hover:bg-brand-900/20 transition-all duration-300 group p-4 md:p-0">
+                             <div className="md:py-4 md:px-6 text-[11px] sm:text-sm font-semibold text-slate-400 uppercase tracking-wider md:normal-case md:tracking-normal md:text-brand-50 md:bg-black/20 md:border-r border-brand-500/20 col-span-2 group-hover:text-brand-400 transition-colors flex items-center mb-1 md:mb-0">
                                {spec.param}
                              </div>
-                             <div className="py-3 px-4 md:px-6 md:py-4 text-sm text-slate-100 col-span-3 leading-relaxed flex items-center">
+                             <div className="md:py-4 md:px-6 text-sm sm:text-base font-semibold text-white md:text-slate-100 md:font-normal col-span-3 leading-relaxed flex items-center">
                                {spec.value}
                              </div>
                            </div>
@@ -1234,19 +1233,99 @@ export default function App() {
       </footer>
 
       {/* Floating Zalo Button */}
-      <a 
-        href="https://zalo.me/0973497685" 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 z-[60] w-12 h-12 sm:w-16 sm:h-16 bg-[#0068FF] rounded-full shadow-[0_0_20px_rgba(0,104,255,0.4)] hover:scale-110 hover:shadow-[0_0_25px_rgba(0,104,255,0.6)] transition-all flex items-center justify-center isolate border-2 border-white"
-        aria-label="Liên hệ trực tiếp qua hộp chat Zalo"
-      >
-        <span className="font-extrabold text-white text-sm sm:text-lg mb-[1px] tracking-tight" style={{ fontFamily: 'sans-serif' }}>Zalo</span>
-        <span className="absolute -top-1 -right-1 flex h-4 w-4 sm:h-5 sm:w-5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-4 w-4 sm:h-5 sm:w-5 bg-red-500 border-2 border-white"></span>
-        </span>
-      </a>
+      <div className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 z-[60] group flex flex-col items-end">
+        {/* Contact Popup */}
+        <div className="absolute bottom-full right-0 mb-4 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 hidden group-hover:block w-max max-w-[90vw] sm:max-w-none overflow-hidden origin-bottom-right transition-all animate-in fade-in slide-in-from-bottom-4 duration-300">
+           <div className="bg-gray-50/80 backdrop-blur-sm border-b border-gray-100 px-5 py-3">
+             <h4 className="text-gray-800 font-medium text-sm sm:text-base">Chat Zalo hoặc gọi Hotline - Hỗ trợ 24/7</h4>
+           </div>
+           <div className="p-3 sm:p-4 flex flex-col gap-2">
+              <a href="https://zalo.me/0982960685" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 sm:gap-4 p-3 rounded-xl hover:bg-blue-50/80 border border-transparent hover:border-blue-100 transition-all duration-200 group/item">
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="w-9 h-9 shrink-0 bg-gradient-to-tr from-[#0068FF] to-[#338dff] rounded-[10px] flex items-center justify-center text-white text-sm font-bold shadow-md shadow-blue-500/20 group-hover/item:scale-110 transition-transform duration-300" style={{fontFamily: 'sans-serif'}}>Z</div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-bold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">Ms. Dung</span>
+                    <span className="text-[11px] font-medium text-gray-400 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">Tư vấn dự án</span>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 bg-red-50 text-[#e0323a] rounded-lg font-bold text-xs sm:text-sm tracking-tight border border-red-100/50 group-hover/item:bg-[#e0323a] group-hover/item:text-white transition-colors duration-300">
+                  <Phone className="w-3.5 h-3.5" />
+                  0982.960.685
+                </div>
+              </a>
+
+              <a href="https://zalo.me/0973497685" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 sm:gap-4 p-3 rounded-xl hover:bg-blue-50/80 border border-transparent hover:border-blue-100 transition-all duration-200 group/item bg-gray-50/50">
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="w-9 h-9 shrink-0 bg-gradient-to-tr from-[#0068FF] to-[#338dff] rounded-[10px] flex items-center justify-center text-white text-sm font-bold shadow-md shadow-blue-500/20 group-hover/item:scale-110 transition-transform duration-300" style={{fontFamily: 'sans-serif'}}>Z</div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-bold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">Mr. Sơn</span>
+                    <span className="text-[11px] font-medium text-gray-400 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">Hỗ trợ kỹ thuật</span>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 bg-red-50 text-[#e0323a] rounded-lg font-bold text-xs sm:text-sm tracking-tight border border-red-100/50 group-hover/item:bg-[#e0323a] group-hover/item:text-white transition-colors duration-300">
+                  <Phone className="w-3.5 h-3.5" />
+                  0973.497.685
+                </div>
+              </a>
+
+              <a href="https://zalo.me/0961919559" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 sm:gap-4 p-3 rounded-xl hover:bg-blue-50/80 border border-transparent hover:border-blue-100 transition-all duration-200 group/item">
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="w-9 h-9 shrink-0 bg-gradient-to-tr from-[#0068FF] to-[#338dff] rounded-[10px] flex items-center justify-center text-white text-sm font-bold shadow-md shadow-blue-500/20 group-hover/item:scale-110 transition-transform duration-300" style={{fontFamily: 'sans-serif'}}>Z</div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-bold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">Ms. Hồng</span>
+                    <span className="text-[11px] font-medium text-gray-400 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">Báo giá đại lý</span>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 bg-red-50 text-[#e0323a] rounded-lg font-bold text-xs sm:text-sm tracking-tight border border-red-100/50 group-hover/item:bg-[#e0323a] group-hover/item:text-white transition-colors duration-300">
+                  <Phone className="w-3.5 h-3.5" />
+                  0961.919.559
+                </div>
+              </a>
+
+              <a href="https://zalo.me/0961653553" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 sm:gap-4 p-3 rounded-xl hover:bg-blue-50/80 border border-transparent hover:border-blue-100 transition-all duration-200 group/item bg-gray-50/50">
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="w-9 h-9 shrink-0 bg-gradient-to-tr from-[#0068FF] to-[#338dff] rounded-[10px] flex items-center justify-center text-white text-sm font-bold shadow-md shadow-blue-500/20 group-hover/item:scale-110 transition-transform duration-300" style={{fontFamily: 'sans-serif'}}>Z</div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-bold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">Mr. Đức Sơn</span>
+                    <span className="text-[11px] font-medium text-gray-400 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">Sale Manager</span>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 bg-red-50 text-[#e0323a] rounded-lg font-bold text-xs sm:text-sm tracking-tight border border-red-100/50 group-hover/item:bg-[#e0323a] group-hover/item:text-white transition-colors duration-300">
+                  <Phone className="w-3.5 h-3.5" />
+                  0961.653.553
+                </div>
+              </a>
+
+              <a href="https://zalo.me/0989395445" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-2 sm:gap-4 p-3 rounded-xl hover:bg-blue-50/80 border border-transparent hover:border-blue-100 transition-all duration-200 group/item">
+                <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                  <div className="w-9 h-9 shrink-0 bg-gradient-to-tr from-[#0068FF] to-[#338dff] rounded-[10px] flex items-center justify-center text-white text-sm font-bold shadow-md shadow-blue-500/20 group-hover/item:scale-110 transition-transform duration-300" style={{fontFamily: 'sans-serif'}}>Z</div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-bold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis">Ms. Lan</span>
+                    <span className="text-[11px] font-medium text-gray-400 mt-0.5 whitespace-nowrap overflow-hidden text-ellipsis">CSKH & Vận đơn</span>
+                  </div>
+                </div>
+                <div className="shrink-0 flex items-center gap-1.5 px-2 sm:px-3 py-1.5 bg-red-50 text-[#e0323a] rounded-lg font-bold text-xs sm:text-sm tracking-tight border border-red-100/50 group-hover/item:bg-[#e0323a] group-hover/item:text-white transition-colors duration-300">
+                  <Phone className="w-3.5 h-3.5" />
+                  0989.395.445
+                </div>
+              </a>
+           </div>
+        </div>
+
+        <button 
+          className="relative w-12 h-12 sm:w-[60px] sm:h-[60px] isolate focus:outline-none"
+          aria-label="Liên hệ trực tiếp qua hộp chat Zalo"
+        >
+          <div className="absolute inset-0 rounded-full bg-[#0068FF] animate-ping opacity-30 duration-1000"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-[#0068FF] to-[#338dff] rounded-full shadow-[0_4px_20px_rgba(0,104,255,0.4)] group-hover:scale-110 group-hover:shadow-[0_8px_25px_rgba(0,104,255,0.5)] transition-all duration-300 flex items-center justify-center border-2 border-white z-10 animate-[bounce_3s_infinite]">
+            <span className="font-extrabold text-white text-sm sm:text-xl tracking-tight" style={{ fontFamily: 'sans-serif' }}>Zalo</span>
+            <span className="absolute -top-1 -right-1 flex h-4 w-4 sm:h-[18px] sm:w-[18px]">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-80 duration-700"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 sm:h-[18px] sm:w-[18px] bg-red-500 border-2 border-white"></span>
+            </span>
+          </div>
+        </button>
+      </div>
 
       {/* Floating CTA for Mobile */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-[#0f172a] border-t border-brand-500/40 z-50 sm:hidden flex gap-3 shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
