@@ -470,8 +470,8 @@ export default function App() {
               transition={{ duration: 0.6 }}
               className="text-center lg:text-left bg-[#020617]/60 backdrop-blur-md p-6 sm:p-8 lg:p-10 rounded-[2rem] border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.3)]"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/40 border border-brand-100 text-brand-500 font-medium text-sm mb-6">
-                <span className="flex h-2 w-2 rounded-full bg-accent-500 animate-glow-red"></span>
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-brand-900/40 border border-brand-100 text-brand-500 font-medium text-[10px] sm:text-sm mb-4 sm:mb-6 leading-tight">
+                <span className="flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-accent-500 animate-glow-red"></span>
                 Dây Nhảy Quang Tiêu Chuẩn Cao Cấp
               </div>
               <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[1.75rem] xl:text-4xl 2xl:text-5xl font-extrabold tracking-tight text-white leading-tight sm:leading-tight mb-4 lg:mb-6 uppercase">
@@ -805,7 +805,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
             <h2 className="text-base text-brand-500 font-semibold tracking-wide uppercase">Thông Số Kỹ Thuật dây nhảy quang</h2>
-            <p className="inline-block mt-2 text-3xl leading-tight font-extrabold tracking-tight text-accent-500 bg-[#0f172a]/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-[0_0_20px_rgba(37,166,223,0.2)] border border-brand-500/30 sm:text-4xl">
+            <p className="inline-block mt-2 text-xl sm:text-3xl md:text-4xl leading-tight font-extrabold tracking-tight text-accent-500 bg-[#0f172a]/90 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl shadow-[0_0_20px_rgba(37,166,223,0.2)] border border-brand-500/30">
               THÔNG SỐ KỸ THUẬT CHI TIẾT CÁC LOẠI
             </p>
             <p className="mt-4 text-lg text-white [text-shadow:_0_1px_2px_rgb(0_0_0_/_80%)]">Bảng thông số kỹ thuật chuẩn EIA-310-D giúp kỹ sư dự toán mạng thiết kế dễ dàng.</p>
