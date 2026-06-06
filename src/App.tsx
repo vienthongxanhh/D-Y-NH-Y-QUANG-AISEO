@@ -16,6 +16,7 @@ export default function App() {
   const [activeFilter, setActiveFilter] = useState('singlemode');
   const [activeSpecFilter, setActiveSpecFilter] = useState('singlemode');
   const [activeFeature, setActiveFeature] = useState(0);
+  const [isZaloOpen, setIsZaloOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -1235,7 +1236,7 @@ export default function App() {
       {/* Floating Zalo Button */}
       <div className="fixed bottom-24 sm:bottom-8 right-4 sm:right-8 z-[60] group flex flex-col items-end">
         {/* Contact Popup */}
-        <div className="absolute bottom-[calc(100%+0.5rem)] right-0 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.15)] border border-gray-100 hidden group-hover:flex group-focus-within:flex flex-col w-[calc(100vw-32px)] sm:w-max max-w-[340px] sm:max-w-none overflow-hidden origin-bottom-right transition-all animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] sm:max-h-[85vh]">
+        <div className={`absolute bottom-[calc(100%+0.5rem)] right-0 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.15)] border border-gray-100 flex-col w-[calc(100vw-32px)] sm:w-max max-w-[340px] sm:max-w-none overflow-hidden origin-bottom-right transition-all animate-in fade-in zoom-in-95 duration-200 max-h-[70vh] sm:max-h-[85vh] ${isZaloOpen ? 'flex' : 'hidden sm:group-hover:flex sm:group-focus-within:flex'}`}>
            <div className="bg-gray-50/95 backdrop-blur-sm border-b border-gray-100 px-4 sm:px-5 py-3 shrink-0">
              <h4 className="text-gray-800 font-bold text-sm sm:text-base">Chat Zalo hoặc gọi Hotline - Hỗ trợ 24/7</h4>
            </div>
@@ -1313,6 +1314,7 @@ export default function App() {
         </div>
 
         <button 
+          onClick={() => setIsZaloOpen(!isZaloOpen)}
           type="button"
           className="relative w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] isolate focus:outline-none"
           aria-label="Liên hệ trực tiếp qua hộp chat Zalo"
